@@ -2,6 +2,7 @@ import { fetchProductDetails } from "@/utils/api";
 import React from "react";
 import ListAllProduct from "../page";
 import NotFound from "@/app/not-found";
+import Link from "next/link";
 
 const DetailPage = async ({ params }: { params: { id: string } }) => {
   const product = await fetchProductDetails({ id: params.id });
@@ -12,8 +13,15 @@ const DetailPage = async ({ params }: { params: { id: string } }) => {
 
   return (
     <div className="bg-gray-100 h-auto md:h-screen py-8 grid grid-cols-1 md:grid-cols-2 overflow-scroll md:overflow-hidden ">
+      {/* detail page */}
       <div className="max-w-7xl  px-4 sm:px-6 lg:px-8  ">
-        <div className="bg-white rounded-xl shadow-lg overflow-scroll md:overflow-hidden">
+        <Link
+          href="/"
+          className="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+        >
+          back to home
+        </Link>
+        <div className="bg-white rounded-xl shadow-lg overflow-y-scroll h-screen pb-[200px] mt-5 scrollbar-hidden">
           {/* Product Header */}
           <div className="p-6 border-b border-gray-200">
             <h1 className="text-3xl font-bold text-gray-800">
@@ -89,9 +97,6 @@ const DetailPage = async ({ params }: { params: { id: string } }) => {
 
               {/* Quantity Selector and Add to Cart */}
               <div className="flex items-center gap-4 mb-6">
-                <div className="flex items-center border border-gray-300 rounded">
-                  1
-                </div>
                 <button className="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors">
                   Add to Cart
                 </button>
