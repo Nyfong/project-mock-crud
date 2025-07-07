@@ -1,5 +1,6 @@
 const BASE_URL =
   process.env.NEXT_PUBLIC_BASE_URL || "https://fakestoreapi.com/products";
+
 export async function fetchProductDetails({ id }: { id: string }) {
   try {
     const response = await fetch(`${BASE_URL}/${id}`, {
@@ -10,7 +11,7 @@ export async function fetchProductDetails({ id }: { id: string }) {
     }
     return await response.json();
   } catch (error) {
-    console.error("Error fetching products:", error);
+    console.log("Error fetching products:", error);
     return [];
   }
 }

@@ -1,14 +1,19 @@
 import { fetchProductDetails } from "@/utils/api";
 import React from "react";
 import ListAllProduct from "../page";
+import NotFound from "@/app/not-found";
 
 const DetailPage = async ({ params }: { params: { id: string } }) => {
   const product = await fetchProductDetails({ id: params.id });
+  console.log("Product Details:", product);
+  if (!product || Object.keys(product).length === 0) {
+    return <NotFound />;
+  }
 
   return (
-    <div className="bg-gray-100 h-screen py-8 grid grid-cols-2 overflow-hidden ">
+    <div className="bg-gray-100 h-auto md:h-screen py-8 grid grid-cols-1 md:grid-cols-2 overflow-scroll md:overflow-hidden ">
       <div className="max-w-7xl  px-4 sm:px-6 lg:px-8  ">
-        <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+        <div className="bg-white rounded-xl shadow-lg overflow-scroll md:overflow-hidden">
           {/* Product Header */}
           <div className="p-6 border-b border-gray-200">
             <h1 className="text-3xl font-bold text-gray-800">
@@ -38,7 +43,7 @@ const DetailPage = async ({ params }: { params: { id: string } }) => {
           </div>
 
           {/* Product Content */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-6">
+          <div className=" gap-8 p-6">
             {/* Image Gallery */}
             <div>
               <div className="flex justify-center mb-6">
@@ -144,7 +149,7 @@ const DetailPage = async ({ params }: { params: { id: string } }) => {
           </div>
         </div>
       </div>
-      <div className="overflow-y-auto">
+      <div className="overflow-y-auto pb-[300px]">
         <ListAllProduct />
       </div>
     </div>
