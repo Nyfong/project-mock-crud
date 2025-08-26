@@ -3,10 +3,16 @@ import React from "react";
 import ListAllProduct from "../page";
 import NotFound from "@/app/not-found";
 import Link from "next/link";
+interface DetailPageProps {
+  params: {
+    id: string;
+  };
+}
 
-const DetailPage = async ({ params }: { params: { id: string } }) => {
+const DetailPage = async ({ params }: DetailPageProps) => {
   const product = await fetchProductDetails({ id: params.id });
   console.log("Product Details:", product);
+
   if (!product || Object.keys(product).length === 0) {
     return <NotFound />;
   }
