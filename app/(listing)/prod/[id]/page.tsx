@@ -3,14 +3,10 @@ import React from "react";
 import ListAllProduct from "../page";
 import NotFound from "@/app/not-found";
 import Link from "next/link";
-interface DetailPageProps {
-  params: {
-    id: string;
-  };
-}
 
-const DetailPage = async ({ params }: DetailPageProps) => {
-  const product = await fetchProductDetails({ id: params.id });
+const DetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id } = await params;
+  const product = await fetchProductDetails({ id });
   console.log("Product Details:", product);
 
   if (!product || Object.keys(product).length === 0) {

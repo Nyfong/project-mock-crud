@@ -5,7 +5,7 @@ export default function SectionLanding() {
     <>
       <header>
         <div className="container mx-auto">
-          <nav className="w-full rounded-lg border shadow-lg overflow-hidden p-5 bg-background/10 border-transparent shadow-transparent px-0">
+          <nav className="w-full rounded-lg border shadow-lg overflow-hidden p-5 bg-background/10 dark:bg-background/80 border-transparent shadow-transparent px-0">
             <div className="flex items-center relative">
               <div className="hidden lg:block  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                 <ul className="mt-4 flex flex-col gap-x-3 gap-y-1.5 lg:mt-0 lg:flex-row lg:items-center px-5">
@@ -62,7 +62,7 @@ export default function SectionLanding() {
         </div>
         <div className="container px-5 py-12 md:py-20 mx-auto grid h-full w-full grid-cols-1 gap-8 items-center md:grid-cols-2">
           <div>
-            <h1 className="font-sans antialiased font-bold text-3xl md:text-4xl lg:text-5xl text-inherit mb-4">
+            <h1 className="font-sans antialiased font-bold text-3xl md:text-4xl lg:text-5xl text-inherit dark:text-white mb-4">
               Welcome to Krypton Shop
             </h1>
             <p className="font-sans antialiased text-base md:text-lg text-foreground [text-wrap:_balance] max-w-2xl">
